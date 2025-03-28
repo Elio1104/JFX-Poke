@@ -4,13 +4,15 @@ import com.almasb.fxgl.dsl.FXGL;
 import javafx.geometry.Pos;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import technofutur.game.jfxpoke.AppLauncher;
 import technofutur.game.jfxpoke.menu.components.MenuFactory;
 
 public class MainMenu {
+    private StackPane container;
 
-    public void init() {
+    public MainMenu(AppLauncher appLauncher) {
         VBox vbox = new VBox(10,
-                MenuFactory.createButton("Play", this::launchGame),
+                MenuFactory.createButton("Play", () -> appLauncher.startGame()),
                 MenuFactory.createButton("Options", this::showOptions),
                 MenuFactory.createButton("Quit", () -> FXGL.getGameController().exit())
         );
@@ -18,19 +20,20 @@ public class MainMenu {
         vbox.setSpacing(10);
         vbox.setAlignment(Pos.CENTER);
 
-        StackPane container = new StackPane(vbox);
+        container = new StackPane(vbox);
         container.setPrefSize(FXGL.getAppWidth(), FXGL.getAppHeight());
         container.setAlignment(Pos.CENTER);
-
-        FXGL.addUINode(container);
-    }
-
-    private void launchGame() {
-        FXGL.getGameController().startNewGame();
-        FXGL.removeUINode(FXGL.getGameScene().getRoot().getChildren().getFirst());
     }
 
     private void showOptions() {
 
+    }
+
+    public void showMenu() {
+        FXGL.addUINode(container);
+    }
+
+    public void hideMenu() {
+        FXGL.removeUINode(container);
     }
 }

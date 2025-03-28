@@ -1,19 +1,18 @@
 package technofutur.game.jfxpoke.game;
 
-import com.almasb.fxgl.app.GameApplication;
+import technofutur.game.jfxpoke.AppLauncher;
 
-import com.almasb.fxgl.app.GameSettings;
-import javafx.stage.Stage;
+public class Game {
 
-public class Game extends GameApplication {
-
-
-    @Override
-    protected void initSettings(GameSettings settings) {
+    public Game(AppLauncher appLauncher) {
 
     }
 
-    public static void main(String[] args) {
-        launch(args);
+    public void showGame() {
+
+    }
+
+    public void hideGame() {
+
     }
 }
